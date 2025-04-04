@@ -151,7 +151,7 @@ initial begin
 //    #8ns;
 
     // Load binary into BRAM
-    $readmemh("C:/Users/joeyz/Downloads/lab3_binary.hex", my_memory);
+    $readmemh("C:/Users/joeyz/CS391_R1/CS391_R1.srcs/binaries/lab3_binary.hex", my_memory);
 
     #40ns;
 
