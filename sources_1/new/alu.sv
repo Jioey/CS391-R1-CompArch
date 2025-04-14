@@ -32,7 +32,7 @@ module alu # (
 
 assign error = (control > 4'b0111) && (control != 4'b1000) && (control != 4'b1101);
 
-// Organized to fit RISC-V
+// Organized to fit RISC-V funct3
 always_comb begin
     case (control) 
         4'b0000: res = op1 + op2; // ADD       

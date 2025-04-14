@@ -133,19 +133,20 @@ risc_v cpu1 (
 
     .rready(rready), // axi read
     .rvalid(rvalid),
-    .rdata(rdata), 
+    .rdata(rdata),
     .arready(arready),
     .arvalid(arvalid),
     .araddr(araddr),
 
     .awready(awready), // axi write
-    .bresp(bresp),
     .bvalid(bvalid),
     .awaddr(awaddr),
     .awvalid(awvalid),
+    .wready(wready),
     .wvalid(wvalid),
     .wdata(wdata),
-    .bready(bready)    
+    .bready(bready),    
+    .bresp(bresp)
 );
 
 always #1ps clk=~clk; // 2ps cycles
@@ -177,7 +178,7 @@ initial begin
 
     // Load binary file into BRAM
     $readmemh("C:/Users/joeyz/CS391_R1/CS391_R1.srcs/binaries/lab4_binary.hex", my_memory);
-    #40ns;
+    #40ps; // NOTE: ps?
     // 480 = 64 + 4 * 104 -- num lines in .hex
     for (int i = 64; i < 480; i+=4) begin
         `write_inst(i, {my_memory[i+3], my_memory[i+2], my_memory[i+1], my_memory[i]})
